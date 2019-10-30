@@ -1,0 +1,59 @@
+{% set build = "1" %}
+
+package:
+    name: r-rgcca_launcher
+    version: 0.3.1
+source:
+    git_rev: master 
+    git_url: https://github.com/BrainAndSpineInstitute/rgcca_Rpackage.git
+build:
+    noarch: generic
+    number: {{ build }}
+    rpaths:
+        - lib/
+        - lib/R/lib/
+    string: r35_{{ build }}
+requirements:
+    host:
+        - _r-mutex
+        - r-base
+        - r-deriv
+        - r-devtools
+        - r-mass
+        - r-rgcca
+        - r-ggplot2
+        - r-optparse
+        - r-scales
+        - r-igraph
+        - r-ggrepel
+        - r-plotly
+        - r-visnetwork
+        - r-data.table
+        - libgfortran
+    run:
+        - r-deriv
+        - r-mass
+        - r-rgcca
+        - r-ggplot2
+        - r-optparse
+        - r-scales
+        - r-igraph
+        - r-ggrepel
+        - r-plotly
+        - r-visnetwork
+        - r-data.table
+        - libgfortran
+
+test:
+    commands:
+        - $R -e "library('rgccaLauncher')"
+about:
+    home: https://CRAN.R-project.org/package=RGCCA
+    license: GPL (>= 2)
+    summary: 'Multiblock data analysis concerns the analysis of several sets of variables
+        (blocks) observed on the same group of individuals. The main aims of the RGCCA
+        package are: (i) to study the relationships between blocks and (ii) to identify
+        subsets of variables of each block which are active in their relationships
+        with the other blocks.'
+extra:
+    final: true
