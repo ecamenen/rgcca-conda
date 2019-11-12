@@ -1,0 +1,74 @@
+{% set name = "rgcca-launcher" %}
+{% set version = "0.3.2" %}
+{% set r_version = "5" %}
+{% set build = "003" %}
+
+package:
+    name: {{ name }}
+    version: {{ version }}
+
+source:
+    git_rev: {{ version }}
+    git_url: https://github.com/BrainAndSpineInstitute/rgcca_Rpackage.git
+    git_depth: 1
+
+#r_version:
+#    - 6
+#    - 5
+#    - 4
+
+build:
+    noarch: generic
+    number: {{ build }}
+    rpaths:
+        - lib/
+        - lib/R/lib/
+    string: r3{{ r_version }}_{{ build }}
+    include_recipe: False
+#    entry_points:
+#        - rgcca = R
+
+requirements:
+    build:
+        - _r-mutex
+        - r-base=3.{{ r_version }}
+        - r-deriv
+        - r-devtools
+        - r-mass
+        - r-rgcca
+        - r-ggplot2
+        - r-optparse
+        - r-scales
+        - r-igraph
+        - r-ggrepel
+        - r-plotly
+        - r-visnetwork
+        - libgfortran
+
+test:
+    commands:
+#        - rgcca -h
+        - cd ${PREFIX} && Rscript R/launcher.R -h
+
+#outputs:
+#    - name: rgcca
+#    files:
+#        - R/
+
+about:
+    home: https://CRAN.R-project.org/package=RGCCA
+    doc_url: https://github.com/BrainAndSpineInstitute/rgcca_Rpackage
+    dev_url: https://github.com/BrainAndSpineInstitute/rgcca_Rpackage/blob/master/README.md
+    license: GPL (>= 2)
+    license_family: GPL3
+    summary: 'Multiblock data analysis concerns the analysis of several sets of variables
+        (blocks) observed on the same group of individuals. The main aims of the RGCCA
+        package are: (i) to study the relationships between blocks and (ii) to identify
+        subsets of variables of each block which are active in their relationships
+        with the other blocks.'
+
+extra:
+    copy_test_source_files: false
+    final: true
+    recipe-maintainers:
+        - ecamenen
