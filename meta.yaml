@@ -1,6 +1,6 @@
 {% set name = "r-rgcca" %}
 {% set version = "2.3" %}
-{% set r_version = "5" %}
+{% set r_version = "4" %}
 {% set build = "005" %}
 
 package:
@@ -24,7 +24,7 @@ build:
 requirements:
     build:
         - _r-mutex
-        - r-base=3.{{ r_version }}
+        - r-base=3.5
         - r-deriv
         - r-devtools
         - r-mass
@@ -40,7 +40,7 @@ requirements:
         - r-nnet
         - libgfortran
     run:
-        - r-base=3.{{ r_version }}
+        - r-base >=3.{{ r_version }},<=3.6
         - r-deriv
         - r-devtools
         - r-mass
