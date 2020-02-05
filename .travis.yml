@@ -19,6 +19,7 @@ install:
 - conda config --set always_yes yes --set changeps1 no
 - conda update -q conda
 - conda info -a
+- conda create -n test
 - conda install -n test -c icm-iconics/label/develop r-rgcca
 
 script:
