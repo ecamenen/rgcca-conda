@@ -35,7 +35,7 @@ conda create -n rgcca -c icm-iconics r-rgcca
 ```
 conda activate rgcca && \
 cd ${CONDA_PREFIX} && \
-wget https://raw.githubusercontent.com/BrainAndSpineInstitute/rgcca_Rpackage/master/inst/extdata/agriculture.tsv && \
+wget https://raw.githubusercontent.com/rgcca-factory/RGCCA/develop/inst/extdata/agriculture.tsv && \
 Rscript launcher.R -d agriculture.tsv
  ```
  
