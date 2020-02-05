@@ -1,5 +1,5 @@
-{% set name = "rgcca-launcher" %}
-{% set version = "0.3.2" %}
+{% set name = "r-rgcca" %}
+{% set version = "develop" %}
 {% set r_version = "5" %}
 {% set build = "003" %}
 
@@ -9,13 +9,8 @@ package:
 
 source:
     git_rev: {{ version }}
-    git_url: https://github.com/BrainAndSpineInstitute/rgcca_Rpackage.git
+    git_url: https://github.com/rgcca-factory/RGCCA.git
     git_depth: 1
-
-#r_version:
-#    - 6
-#    - 5
-#    - 4
 
 build:
     noarch: generic
@@ -25,8 +20,6 @@ build:
         - lib/R/lib/
     string: r3{{ r_version }}_{{ build }}
     include_recipe: False
-#    entry_points:
-#        - rgcca = R
 
 requirements:
     build:
@@ -35,7 +28,6 @@ requirements:
         - r-deriv
         - r-devtools
         - r-mass
-        - r-rgcca
         - r-ggplot2
         - r-optparse
         - r-scales
@@ -43,22 +35,36 @@ requirements:
         - r-ggrepel
         - r-plotly
         - r-visnetwork
+        - r-vegan
+        - r-gridextra
+        - r-nnet
         - libgfortran
+    run:
+        - r-base=3.{{ r_version }}
+        - r-deriv
+        - r-devtools
+        - r-mass
+        - r-ggplot2
+        - r-optparse
+        - r-scales
+        - r-igraph
+        - r-ggrepel
+        - r-plotly
+        - r-visnetwork
+        - r-vegan
+        - r-gridextra
+        - r-nnet
 
 test:
     commands:
-#        - rgcca -h
-        - cd ${PREFIX} && Rscript R/launcher.R -h
-
-#outputs:
-#    - name: rgcca
-#    files:
-#        - R/
+#       - echo $R
+       # - $R -e "library('RGCCA')"
+        - cd ${PREFIX} && Rscript launcher.R -h
 
 about:
     home: https://CRAN.R-project.org/package=RGCCA
-    doc_url: https://github.com/BrainAndSpineInstitute/rgcca_Rpackage
-    dev_url: https://github.com/BrainAndSpineInstitute/rgcca_Rpackage/blob/master/README.md
+    doc_url: https://github.com/rgcca-factory/RGCCA/blob/master/README.mdh
+    dev_url: https://github.com/rgcca-factory/RGCCA
     license: GPL (>= 2)
     license_family: GPL3
     summary: 'Multiblock data analysis concerns the analysis of several sets of variables

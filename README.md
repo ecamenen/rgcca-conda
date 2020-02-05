@@ -28,7 +28,7 @@ More information about:
 
 ### Installation
 ```
-conda create -n rgcca -c icm-iconics rgcca-launcher
+conda create -n rgcca -c icm-iconics r-rgcca
 ```
 
 ### Execution (with Russet data)
@@ -36,7 +36,7 @@ conda create -n rgcca -c icm-iconics rgcca-launcher
 conda activate rgcca && \
 cd ${CONDA_PREFIX} && \
 wget https://raw.githubusercontent.com/BrainAndSpineInstitute/rgcca_Rpackage/master/inst/extdata/agriculture.tsv && \
-Rscript R/launcher.R -d agriculture.tsv
+Rscript launcher.R -d agriculture.tsv
  ```
  
  More information about the command-line parameters [here](https://github.com/BrainAndSpineInstitute/rgcca_Rpackage#command-line).
