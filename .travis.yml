@@ -17,7 +17,6 @@ install:
 - conda create -q -n test -c icm-iconics/label/develop r-rgcca -y
 
 script:
-- set -eux
 - conda activate test && \
  cd ${CONDA_PREFIX} && \
  conda list && \
