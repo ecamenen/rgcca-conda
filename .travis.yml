@@ -16,4 +16,4 @@ install:
 - conda create -n test -c icm-iconics/label/develop -c bioconda -c conda-forge r-rgcca
 
 script:
-- conda activate test && cd ${CONDA_PREFIX} && conda list &&  which R && ls && wget https://raw.githubusercontent.com/rgcca-factory/RGCCA/develop/inst/extdata/agriculture.tsv && Rscript launcher.R -d agriculture.tsv && \
+- conda activate test && cd ${CONDA_PREFIX} && conda list &&  which R && ls && wget https://raw.githubusercontent.com/rgcca-factory/RGCCA/develop/inst/extdata/agriculture.tsv && Rscript launcher.R -d agriculture.tsv
