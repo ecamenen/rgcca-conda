@@ -4,7 +4,6 @@ python:
 - "3.5"
 - "3.6"
 
-#launch test
 install:
 - sudo apt-get update
 - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
@@ -14,7 +13,7 @@ install:
 - conda config --set always_yes yes --set changeps1 no
 - conda update -q conda
 - conda info -a
-- conda create -q -n test -c icm-iconics/label/develop r-rgcca -y
+- conda create -n rgcca -c icm-iconics/label/develop -c bioconda -c conda-forge r-rgcca
 
 script:
 - conda activate test && cd ${CONDA_PREFIX} && conda list &&  which R && ls && wget https://raw.githubusercontent.com/rgcca-factory/RGCCA/develop/inst/extdata/agriculture.tsv && Rscript launcher.R -d agriculture.tsv && \
