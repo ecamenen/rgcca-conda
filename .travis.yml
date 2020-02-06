@@ -18,10 +18,7 @@ install:
 - conda config --set always_yes yes --set changeps1 no
 - conda update -q conda
 - conda info -a
-  conda create -q -n test -c icm-iconics/labels/develop r-rgcca
-- conda activate test
+- conda create -n test -c icm-iconics -c bioconda -c conda-forge r-rgcca
 
 script:
-- cd ${CONDA_PREFIX}
-- wget https://raw.githubusercontent.com/rgcca-factory/RGCCA/develop/inst/extdata/agriculture.tsv
-- Rscript launcher.R -d agriculture.tsv
+- conda activate test && cd ${CONDA_PREFIX} && wget https://raw.githubusercontent.com/rgcca-factory/RGCCA/develop/inst/extdata/agriculture.tsv && Rscript launcher.R -d agriculture.tsv
