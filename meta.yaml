@@ -38,6 +38,7 @@ requirements:
         - r-vegan
         - r-gridextra
         - r-nnet
+        - r-openxlsx
         - libgfortran
     run:
         - r-base=3.{{ r_version }}
@@ -54,6 +55,7 @@ requirements:
         - r-vegan
         - r-gridextra
         - r-nnet
+        - r-openxlsx
 
 test:
     commands:
