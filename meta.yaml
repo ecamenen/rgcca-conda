@@ -1,16 +1,21 @@
 {% set name = "r-rgcca" %}
-{% set version = "2.3.0" %}
+{% set version = "3.0.0" %}
 {% set r_version = "5" %}
-{% set build = "009" %}
+{% set build = "002" %}
 
 package:
     name: {{ name }}
-    version:  {{ version }}
+    version: {{ version }}
 
 source:
     git_rev: {{ version }}
     git_url: https://github.com/rgcca-factory/RGCCA.git
     git_depth: 1
+
+#r_version:
+#    - 6
+#    - 5
+#    - 4
 
 build:
     noarch: generic
@@ -20,53 +25,42 @@ build:
         - lib/R/lib/
     string: r3{{ r_version }}_{{ build }}
     include_recipe: False
+#    entry_points:
+#        - rgcca = R
 
 requirements:
     build:
         - _r-mutex
         - r-base=3.{{ r_version }}
         - r-deriv
-        - r-devtools
+#        - r-devtools
         - r-mass
         - r-ggplot2
         - r-optparse
         - r-scales
         - r-igraph
         - r-ggrepel
-        - r-plotly
-        - r-visnetwork
-        - r-vegan
-        - r-gridextra
-        - r-nnet
+#        - r-plotly
+#        - r-visnetwork
         - r-openxlsx
+        - r-rlang
+        - r-vegan
         - libgfortran
-    run:
-        - r-base=3.{{ r_version }}
-        - r-deriv
-        - r-devtools
-        - r-mass
-        - r-ggplot2
-        - r-optparse
-        - r-scales
-        - r-igraph
-        - r-ggrepel
-        - r-plotly
-        - r-visnetwork
-        - r-vegan
-        - r-gridextra
-        - r-nnet
-        - r-openxlsx
 
 test:
     commands:
-#       - echo $R
-       # - $R -e "library('RGCCA')"
-        - cd ${PREFIX} && Rscript launcher.R -h
+#        - rgcca -h
+        - cd ${PREFIX} && ls && Rscript inst/launcher.R -h
+
+#outputs:
+#    - name: rgcca
+#    files:
+#        - R/
 
 about:
     home: https://CRAN.R-project.org/package=RGCCA
-    doc_url: https://github.com/rgcca-factory/RGCCA/blob/master/README.mdh
-    dev_url: https://github.com/rgcca-factory/RGCCA
+    doc_url: https://github.com/rgcca-factory/RGCCA
+    dev_url: https://github.com/rgcca-factory/RGCCA/blob/master/README.md
     license: GPL (>= 2)
     license_family: GPL3
     summary: 'Multiblock data analysis concerns the analysis of several sets of variables
@@ -76,7 +70,7 @@ about:
         with the other blocks.'
 
 extra:
-    copy_test_source_files: true
+    copy_test_source_files: false
     final: true
     recipe-maintainers:
         - ecamenen

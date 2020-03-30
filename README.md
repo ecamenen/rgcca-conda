@@ -21,22 +21,22 @@ A user-friendly multi-blocks analysis (Regularized Generalized Canonical Correla
  
 More information about:
 - [RGCCA](https://cran.r-project.org/web/packages/RGCCA/vignettes/vignette_RGCCA.pdf)
-- [input / output formats](https://github.com/BrainAndSpineInstitute/rgcca_Rpackage#input-files)
+- [input / output formats](https://github.com/rgcca-factory/RGCCA/tree/release/3.0.0#input-files)
 
 
 ## Usage instruction
 
 ### Installation
 ```
-conda create -n rgcca -c icm-iconics r-rgcca
+conda create -n rgcca -c icm-iconics/label/develop r-rgcca
 ```
 
 ### Execution (with Russet data)
 ```
 conda activate rgcca && \
 cd ${CONDA_PREFIX} && \
-wget https://raw.githubusercontent.com/rgcca-factory/RGCCA/develop/inst/extdata/agriculture.tsv && \
-Rscript launcher.R -d agriculture.tsv
+wget https://raw.githubusercontent.com/rgcca-factory/RGCCA/release/3.0.0/inst/extdata/agriculture.tsv && \
+Rscript inst/launcher.R -d agriculture.tsv
  ```
  
- More information about the command-line parameters [here](https://github.com/BrainAndSpineInstitute/rgcca_Rpackage#command-line).
+ More information about the command-line parameters [here](https://github.com/rgcca-factory/RGCCA/tree/release/3.0.0#command-line).
