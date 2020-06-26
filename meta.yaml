@@ -1,7 +1,7 @@
 {% set name = "r-rgcca" %}
 {% set version = "3.0.0" %}
 {% set r_version = "5" %}
-{% set build = "004" %}
+{% set build = "005" %}
 
 package:
     name: {{ name }}
@@ -30,23 +30,33 @@ build:
 
 requirements:
     build:
-        - r-gridextra
         - _r-mutex
         - r-base=3.{{ r_version }}
+        - r-gridextra
         - r-deriv
-#        - r-devtools
         - r-mass
         - r-ggplot2
         - r-optparse
         - r-scales
         - r-igraph
         - r-ggrepel
-#        - r-plotly
-#        - r-visnetwork
         - r-openxlsx
         - r-rlang
         - r-vegan
         - libgfortran
+    run:
+        - r-base=3.{{ r_version }}
+        - r-gridextra
+        - r-deriv
+        - r-mass
+        - r-ggplot2
+        - r-optparse
+        - r-scales
+        - r-igraph
+        - r-ggrepel
+        - r-openxlsx
+        - r-rlang
+        - r-vegan
 
 test:
     commands:
