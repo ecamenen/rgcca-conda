@@ -1,7 +1,7 @@
 {% set name = "r-rgcca" %}
 {% set version = "3.0.0" %}
 {% set r_version = "5" %}
-{% set build = "002" %}
+{% set build = "004" %}
 
 package:
     name: {{ name }}
@@ -30,6 +30,7 @@ build:
 
 requirements:
     build:
+        - r-gridextra
         - _r-mutex
         - r-base=3.{{ r_version }}
         - r-deriv
@@ -70,7 +71,7 @@ about:
         with the other blocks.'
 
 extra:
-    copy_test_source_files: false
+    copy_test_source_files: true
     final: true
     recipe-maintainers:
         - ecamenen
