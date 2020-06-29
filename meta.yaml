@@ -2,8 +2,6 @@
 {% set version = "3.0.0" %}
 {% set sha256 = "2ee056b54a4564fdff73e02967d18132a34443ca1caed4675ae620237e43104a" %}
 
-#comment
-
 package:
     name: r-{{ name }}
     version: {{ version }}
