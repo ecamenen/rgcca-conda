@@ -1,7 +1,7 @@
 {% set name = "r-rgcca" %}
 {% set version = "3.0.0" %}
-{% set r_version = "5" %}
-{% set build = "005" %}
+{% set r_version = "0" %}
+{% set build = "009" %}
 
 package:
     name: {{ name }}
@@ -23,15 +23,14 @@ build:
     rpaths:
         - lib/
         - lib/R/lib/
-    string: r3{{ r_version }}_{{ build }}
+    string: r4{{ r_version }}_{{ build }}
     include_recipe: False
 #    entry_points:
 #        - rgcca = R
 
 requirements:
     build:
-        - _r-mutex
-        - r-base=3.{{ r_version }}
+        - r-base=4.{{ r_version }}
         - r-gridextra
         - r-deriv
         - r-mass
@@ -45,7 +44,8 @@ requirements:
         - r-vegan
         - libgfortran
     run:
-        - r-base=3.{{ r_version }}
+        - _r-mutex
+        - r-base=4.{{ r_version }}
         - r-gridextra
         - r-deriv
         - r-mass
