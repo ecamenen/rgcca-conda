@@ -1,36 +1,25 @@
-{% set name = "r-rgcca" %}
+{% set name = "rgcca" %}
 {% set version = "3.0.0" %}
-{% set r_version = "0" %}
-{% set build = "009" %}
+{% set sha256 = "2ee056b54a4564fdff73e02967d18132a34443ca1caed4675ae620237e43104a" %}
 
 package:
-    name: {{ name }}
+    name: r-{{ name }}
     version: {{ version }}
 
 source:
-    git_rev: {{ version }}
-    git_url: https://github.com/rgcca-factory/RGCCA.git
-    git_depth: 1
-
-#r_version:
-#    - 6
-#    - 5
-#    - 4
+    url: https://github.com/rgcca-factory/{{ name|upper }}/archive/{{ version }}.tar.gz
+    sha256: {{sha256}}
 
 build:
     noarch: generic
-    number: {{ build }}
+    number: 1
     rpaths:
         - lib/
         - lib/R/lib/
-    string: r4{{ r_version }}_{{ build }}
-    include_recipe: False
-#    entry_points:
-#        - rgcca = R
 
 requirements:
     build:
-        - r-base=4.{{ r_version }}
+        - r-base
         - r-gridextra
         - r-deriv
         - r-mass
@@ -45,7 +34,7 @@ requirements:
         - libgfortran
     run:
         - _r-mutex
-        - r-base=4.{{ r_version }}
+        - r-base
         - r-gridextra
         - r-deriv
         - r-mass
@@ -60,18 +49,13 @@ requirements:
 
 test:
     commands:
-#        - rgcca -h
         - cd ${PREFIX} && ls && Rscript inst/launcher.R -h
-
-#outputs:
-#    - name: rgcca
-#    files:
-#        - R/
+        - $R -e "library('RGCCA')"
 
 about:
     home: https://CRAN.R-project.org/package=RGCCA
-    doc_url: https://github.com/rgcca-factory/RGCCA
-    dev_url: https://github.com/rgcca-factory/RGCCA/blob/master/README.md
+    doc_url: https://github.com/rgcca-factory/rgcca-conda/blob/master/README.md
+    dev_url: https://github.com/rgcca-factory/RGCCA
     license: GPL (>= 2)
     license_family: GPL3
     summary: 'Multiblock data analysis concerns the analysis of several sets of variables
@@ -81,7 +65,5 @@ about:
         with the other blocks.'
 
 extra:
-    copy_test_source_files: true
-    final: true
     recipe-maintainers:
         - ecamenen
