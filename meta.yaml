@@ -1,5 +1,7 @@
 {% set name = "rgcca" %}
 {% set version = "3.0.0" %}
+{% set r_version = "0" %}
+{% set build = "012" %}
 {% set sha256 = "2ee056b54a4564fdff73e02967d18132a34443ca1caed4675ae620237e43104a" %}
 
 package:
@@ -12,14 +14,15 @@ source:
 
 build:
     noarch: generic
-    number: 1
+    number: {{ build }}
     rpaths:
         - lib/
         - lib/R/lib/
+    string: r4{{ r_version }}_{{ build }}
 
 requirements:
     build:
-        - r-base
+        - r-base=4.{{ r_version }}
         - r-gridextra
         - r-deriv
         - r-mass
@@ -34,7 +37,7 @@ requirements:
         - libgfortran
     run:
         - _r-mutex
-        - r-base
+        - r-base=4.{{ r_version }}
         - r-gridextra
         - r-deriv
         - r-mass
