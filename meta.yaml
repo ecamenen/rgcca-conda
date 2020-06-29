@@ -16,7 +16,7 @@ build:
     rpaths:
         - lib/
         - lib/R/lib/
-    string: r40_009
+    string: r40_010
 
 requirements:
     build:
