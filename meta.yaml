@@ -1,5 +1,7 @@
 {% set name = "rgcca" %}
 {% set version = "3.0.0" %}
+{% set r_version = "0" %}
+{% set build = "011" %}
 {% set sha256 = "2ee056b54a4564fdff73e02967d18132a34443ca1caed4675ae620237e43104a" %}
 
 package:
@@ -12,11 +14,11 @@ source:
 
 build:
     noarch: generic
-    number: 1
+    number: {{ build }}
     rpaths:
         - lib/
         - lib/R/lib/
-    string: r40_010
+    string: r4{{ r_version }}_{{ build }}
 
 requirements:
     build:
